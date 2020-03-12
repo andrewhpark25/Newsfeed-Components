@@ -19,17 +19,50 @@ let menuItems = [
     </ul>
   </div>
 
-  The function takes an array as its only argument.
+  The function takes an array as its only argument.*/
 
-  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
-  Add those items to the <ul>
 
-  Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+   function createMenu(menuItems) {
+      // define new elements
+      const menu = document.createElement('div');
+      const menuList = document.createElement('ul');
+      
+   
+      menu.appendChild(menuList);
+    
 
-  Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+      menu.classList.add('menu');
+     
+      /*Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
+      Add those items to the <ul>*/
 
-  Step 5: return the menu component.
+      for (var i = 0; i < menuItems.length; i++) {
+        const menuItem = document.createElement('li');
+        menuItem.textContent = menuItems[i];
+        menuList.appendChild(menuItem);
+      }
+     
+      /*Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.*/
 
-  Step 6: add the menu component to the DOM.
+      let menuBtn = document.querySelector('.menu-button');
+   
+     /* Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).*/
+    
+     menuBtn.addEventListener("click",
+  () => {
+  menu.classList.toggle('menu--open');
   
+   
+    })
+     
+    /*Step 5: return the menu component.*/
+      return menu;
+    }
+
+
+    /*
+       Step 6: add the menu component to the DOM.
 */
+
+    let header = document.querySelector(".header");
+    header.appendChild(createMenu(menuItems));
